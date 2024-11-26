@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->id('table_id');
-            $table->string('qr_code',255);
+            $table->string('qr_code',255)->unique();
             $table->boolean('is_occupied')->default(false);
             $table->timestamps();
         });

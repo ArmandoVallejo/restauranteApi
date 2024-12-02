@@ -27,9 +27,6 @@ class UserAddressController extends Controller
         }
     }
 
-    /**
-     * Remover una dirección de un usuario
-     */
     public function detach(User $user, Addresses $address): JsonResponse
     {
         $user->addresses()->detach($address->address_id);
@@ -40,9 +37,6 @@ class UserAddressController extends Controller
         ]);
     }
 
-    /**
-     * Obtener todas las direcciones de un usuario
-     */
     public function getUserAddresses(User $user): JsonResponse
     {
         return response()->json([

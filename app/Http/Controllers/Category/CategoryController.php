@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index(){
         $categories = Category::all();
-        return response()->json($categories);
+        return response()->json($categories,200);
     }
 
     public function show($id){
@@ -20,7 +20,7 @@ class CategoryController extends Controller
             return response()->json($category);
 
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            
+
             return response()->json(['message' => 'Category not found'], 404);
         }
         

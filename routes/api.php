@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\UserAddress\UserAddressController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Dishes\DishController;
 use App\Http\Controllers\Orders\OrderController;
 use App\Http\Controllers\Table\TableController;
 
@@ -43,3 +44,5 @@ Route::prefix('tables')->group(function () {
 });
 
 Route::apiResource('orders', OrderController::class);
+
+Route::apiResource('dishes', DishController::class);

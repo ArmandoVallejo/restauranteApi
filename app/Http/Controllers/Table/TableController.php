@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Table;
 
 use App\Http\Controllers\Controller;
+use App\Models\Table\Table;
 use App\Http\Requests\Table\TableRequest;
 use App\Http\Requests\Table\UpdateTableRequest;
-use App\Models\Table\Table;
 use Illuminate\Http\Request;
+
 
 class TableController extends Controller
 {

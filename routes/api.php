@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\UserAddress\UserAddressController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Orders\OrderController;
 use App\Http\Controllers\Table\TableController;
 
 Route::prefix('users')->group(function () {
@@ -40,3 +41,5 @@ Route::prefix('tables')->group(function () {
     Route::put('/{id}', [TableController::class, 'update']);
     Route::delete('/{id}', [TableController::class, 'destroy']);
 });
+
+Route::apiResource('orders', OrderController::class);

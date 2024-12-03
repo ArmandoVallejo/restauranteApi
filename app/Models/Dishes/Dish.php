@@ -2,6 +2,7 @@
 
 namespace App\Models\Dishes;
 
+use App\Models\Carts\Cart;
 use App\Models\Category\Category;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,5 +24,10 @@ class Dish extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function carts()
+    {
+        return $this->belongsToMany(Cart::class, 'cart_dishes', 'dish_id', 'cart_id');
     }
 }

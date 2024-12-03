@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Addresses\AddressController;
+use App\Http\Controllers\CartDish\CartDishController;
 use App\Http\Controllers\Carts\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
@@ -53,4 +54,13 @@ Route::prefix('carts')->group(function () {
     Route::post('/', [CartController::class, 'store']);
     Route::get('/{id}', [CartController::class, 'show']);
     Route::delete('/{id}', [CartController::class, 'destroy']);
+    
+    Route::post('/{cart}/dishes/{dish}', [CartDishController::class, 'attach'])
+        ->name('carts.dishes.attach');
+        
+    Route::delete('/{cart}/dishes/{dish}', [CartDishController::class, 'detach'])
+        ->name('carts.dishes.detach');
+        
+    Route::get('/{cart}/dishes', [CartDishController::class, 'getCartDishes'])
+        ->name('carts.dishes.index');
 });

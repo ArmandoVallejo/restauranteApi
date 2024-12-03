@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Addresses;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Addresses\AddressRequest;
 use App\Http\Requests\Addresses\UpdateAddressRequest;
 use App\Models\Addresses\Addresses;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Http\Requests\Addresses\AddressRequest;
 
 class AddressController extends Controller
 {

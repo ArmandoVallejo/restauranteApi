@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\UserAddress\UserAddressController;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Table\TableController;
 
 Route::prefix('users')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
@@ -30,4 +31,12 @@ Route::prefix('addresses')->group(function () {
 Route::prefix('categories')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
     Route::get('/{id}', [CategoryController::class, 'show']);
+});
+
+Route::prefix('tables')->group(function () {
+    Route::get('/', [TableController::class, 'index']);
+    Route::post('/', [TableController::class, 'store']);
+    Route::get('/{id}', [TableController::class, 'show']);
+    Route::put('/{id}', [TableController::class, 'update']);
+    Route::delete('/{id}', [TableController::class, 'destroy']);
 });

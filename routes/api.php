@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Addresses\AddressController;
+use App\Http\Controllers\Carts\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\UserAddress\UserAddressController;
@@ -46,3 +47,10 @@ Route::prefix('tables')->group(function () {
 Route::apiResource('orders', OrderController::class);
 
 Route::apiResource('dishes', DishController::class);
+
+Route::prefix('carts')->group(function () {
+    Route::get('/', [CartController::class, 'index']);
+    Route::post('/', [CartController::class, 'store']);
+    Route::get('/{id}', [CartController::class, 'show']);
+    Route::delete('/{id}', [CartController::class, 'destroy']);
+});

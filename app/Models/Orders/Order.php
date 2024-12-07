@@ -3,6 +3,7 @@
 namespace App\Models\Orders;
 
 use App\Models\Addresses\Addresses;
+use App\Models\Dishes\Dish;
 use App\Models\Table\Table;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
@@ -32,5 +33,12 @@ class Order extends Model
     public function table()
     {
         return $this->belongsTo(Table::class, 'table_id');
+    }
+
+    public function dishes()
+    {
+        return $this->belongsToMany(Dish::class, 'order_dishes', 'order_id', 'dish_id')
+            ->withPivot(['quantity', 'total_price'])
+            ->withTimestamps();
     }
 }

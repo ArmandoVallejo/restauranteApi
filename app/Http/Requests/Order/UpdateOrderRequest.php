@@ -28,4 +28,16 @@ class UpdateOrderRequest extends FormRequest
             'status' => 'sometimes|in:pending,preparing,ready,completed',
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'user_id.exists' => 'El usuario seleccionado no existe',
+
+            'address_id.exists' => 'La dirección seleccionada no existe',
+
+            'table_id.exists' => 'La mesa seleccionada no existe',
+
+            'status.in' => 'El estado debe ser: pendiente, preparando, listo o completado'
+        ];
+    }
 }

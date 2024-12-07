@@ -25,4 +25,11 @@ class CartRequest extends FormRequest
             'user_id' => 'required|exists:users,user_id'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'user_id.required' => 'El usuario es obligatorio',
+        ];
+    }
 }

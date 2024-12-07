@@ -27,4 +27,15 @@ class UpdateAddressRequest extends FormRequest
             'longitude' => 'sometimes|numeric',  
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'address.string' => 'La dirección debe ser texto',
+            'address.max' => 'La dirección no puede exceder los 255 caracteres',
+            
+            'latitude.numeric' => 'La latitud debe ser un número',
+            
+            'longitude.numeric' => 'La longitud debe ser un número'
+        ];
+    }
 }

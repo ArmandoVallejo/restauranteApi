@@ -8,6 +8,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\UserAddress\UserAddressController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Dishes\DishController;
+use App\Http\Controllers\OrderDish\OrderDishController;
 use App\Http\Controllers\Orders\OrderController;
 use App\Http\Controllers\Table\TableController;
 
@@ -45,7 +46,18 @@ Route::prefix('tables')->group(function () {
     Route::delete('/{id}', [TableController::class, 'destroy']);
 });
 
-Route::apiResource('orders', OrderController::class);
+Route::prefix('orders')->group(function () {
+    Route::apiResource('',OrderController::class);
+    
+    Route::post('/{order}/dishes/{dish}', [OrderDishController::class, 'attach'])
+        ->name('orders.dishes.attach');
+        
+    Route::delete('/{order}/dishes/{dish}', [OrderDishController::class, 'detach'])
+        ->name('orders.dishes.detach');
+        
+    Route::get('/{order}/dishes', [OrderDishController::class, 'getOrderDishes'])
+        ->name('orders.dishes.index');
+});
 
 Route::apiResource('dishes', DishController::class);
 

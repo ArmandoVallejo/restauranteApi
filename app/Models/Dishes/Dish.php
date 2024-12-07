@@ -4,6 +4,7 @@ namespace App\Models\Dishes;
 
 use App\Models\Carts\Cart;
 use App\Models\Category\Category;
+use App\Models\Orders\Order;
 use Illuminate\Database\Eloquent\Model;
 
 class Dish extends Model
@@ -29,5 +30,10 @@ class Dish extends Model
     public function carts()
     {
         return $this->belongsToMany(Cart::class, 'cart_dishes', 'dish_id', 'cart_id');
+    }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_dishes', 'dish_id', 'order_id');
     }
 }

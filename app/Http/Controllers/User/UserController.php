@@ -41,6 +41,13 @@ class UserController extends Controller
                 'message' => 'Usuario creado exitosamente',
                 'user' => $user
             ], Response::HTTP_CREATED);
+
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Error de validación',
+                'errors' => $e->validator->getMessageBag()
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
+
         } catch (\Exception $e) {
             Log::error('Error al crear usuario: ' . $e->getMessage());
             return response()->json([

@@ -26,4 +26,13 @@ class UpdateTableRequest extends FormRequest
             'is_occupied' => 'sometimes|boolean',
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'qr_code.string' => 'El código QR debe ser texto',
+            'qr_code.max' => 'El código QR no puede exceder los 255 caracteres',
+
+            'is_occupied.boolean' => 'El estado de ocupación debe ser verdadero o falso'
+        ];
+    }
 }

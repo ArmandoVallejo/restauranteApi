@@ -28,4 +28,18 @@ class OrderRequest extends FormRequest
             'status' => 'required|in:pending,preparing,ready,completed'
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'user_id.required' => 'El usuario es obligatorio',
+            'user_id.exists' => 'El usuario seleccionado no existe',
+
+            'address_id.exists' => 'La dirección seleccionada no existe',
+
+            'table_id.exists' => 'La mesa seleccionada no existe',
+
+            'status.required' => 'El estado es obligatorio',
+            'status.in' => 'El estado debe ser: pendiente, preparando, listo o completado'
+        ];
+    }
 }

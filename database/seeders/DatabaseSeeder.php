@@ -5,6 +5,7 @@ namespace Database\Seeders;
 
 use Database\Seeders\Addresses\AddressesSeeder;
 use Database\Seeders\Category\CategorySeeder;
+use Database\Seeders\Dish\DishSeeder;
 use Database\Seeders\User\UserSeeder;
 use Illuminate\Database\Seeder;
 
@@ -18,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call([UserSeeder::class]);
         $this->call([AddressesSeeder::class]);
         $this->call([CategorySeeder::class]);
+        $this->call([DishSeeder::class]);
     }
 }

@@ -62,4 +62,25 @@ class OrderController extends Controller
         $order->delete();
         return response()->json(['message' => 'Order deleted successfully']);
     }
+
+    public function getOrdersByUser($userId)
+    {
+        try {
+            $orders = Order::where('user_id', $userId)
+                          ->with('user')  
+                          ->orderBy('created_at', 'desc')
+                          ->get();
+
+            return response()->json($orders);
+            
+        } catch (\Exception $e) {
+            Log::error('Error al obtener órdenes del usuario: ' . $e->getMessage());
+            
+            return response()->json([
+                'success' => false,
+                'message' => 'Error al obtener las órdenes del usuario',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 }

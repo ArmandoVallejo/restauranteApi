@@ -57,6 +57,9 @@ Route::prefix('orders')->group(function () {
         
     Route::get('/{order}/dishes', [OrderDishController::class, 'getOrderDishes'])
         ->name('orders.dishes.index');
+        
+    Route::get('/user/{userId}', [OrderController::class, 'getOrdersByUser'])
+        ->name('orders.user');
 });
 
 Route::apiResource('dishes', DishController::class);

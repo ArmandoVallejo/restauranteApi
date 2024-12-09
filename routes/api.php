@@ -46,8 +46,8 @@ Route::prefix('tables')->group(function () {
     Route::delete('/{id}', [TableController::class, 'destroy']);
 });
 
+Route::apiResource('orders',OrderController::class);
 Route::prefix('orders')->group(function () {
-    Route::apiResource('',OrderController::class);
     
     Route::post('/{order}/dishes/{dish}', [OrderDishController::class, 'attach'])
         ->name('orders.dishes.attach');
